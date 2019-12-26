@@ -80,7 +80,7 @@ public class GameScreenController {
                 gameActivity.addTileToRegister(newTile);
             }
         }
-        setSourceValue(1);
+        setSource(1);
     }
 
     private Tile generateTile(int x, int y) {
@@ -150,14 +150,19 @@ public class GameScreenController {
         }
     }
 
-    public void setSourceValue(int value) {
+    public void setSource(int value) {
         source.setText(String.valueOf(value));
+        setSourceBackground(value);
+    }
+
+    private void setSourceBackground(int value) {
+        int background = getBackgroundDrawableForValue(value);
+        source.setBackground(ContextCompat.getDrawable(gameActivity, background));
     }
 
     public int getSourceValue() {
         return Integer.valueOf(source.getText().toString());
     }
-
 
     public void setProgressBarMax(int points) {
         progressBar.setMax(points);
@@ -171,8 +176,12 @@ public class GameScreenController {
     }
 
     public void setTileBackground(Tile tile, int value) {
-        int background = LevelsConfig.getTileBackground(value);
+        int background = getBackgroundDrawableForValue(value);
         tile.setBackground(ContextCompat.getDrawable(gameActivity, background));
+    }
+
+    private int getBackgroundDrawableForValue(int value) {
+        return LevelsConfig.getTileBackground(value);
     }
 
     private void setLabel(boolean isGameOver, int level) {

@@ -114,9 +114,9 @@ public class GameActivity extends AppCompatActivity {
 
     private int getValueForRandomTile() {
         int range = 1;
-        if (level > 18) range = 4;
-        else if (level > 15) range = 3;
-        else if (level > 10) range = 2;
+        if (level > 17) range = 4;
+        else if (level > 14) range = 3;
+        else if (level > 9) range = 2;
 
         return randomNextValue(range);
     }
@@ -256,7 +256,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void setSourceValue(int value) {
-        screenController.setSourceValue(value);
+        screenController.setSource(value);
     }
 
     private void saveScore(int points) {
